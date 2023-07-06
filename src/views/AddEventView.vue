@@ -21,23 +21,15 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <form class="row g-3" @submit.prevent="addItem">
+                <form class="row g-3" @submit.prevent="addEvent">
                   <div class="col-md-6">
-                    <label for="inputName" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Name" v-model="formData.name">
+                    <label for="inputName" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="inputTitle" required placeholder="Title" v-model="formData.title">
                   </div>
                   <div class="col-md-6">
                     <label for="inputPrice" class="form-label">Description</label>
                     <input type="text" class="form-control" id="description" placeholder="Short and sweet work best" v-model="formData.description">
                     </div>
-                  <div class="col-md-6">
-                    <label for="inputPrice" class="form-label">Price</label>
-                    <input type="text" class="form-control" id="inputPrice" placeholder="Price" v-model="formData.price">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputQuantity" class="form-label">Quantity</label>
-                    <input type="text" class="form-control" id="inputQuantity" placeholder="Quantity" v-model="formData.quantity">
-                  </div>
                   <div class="col-12">
                     <button type="submit" class="btn btn-primary">Add</button>
                   </div>
@@ -61,12 +53,8 @@ export default {
   components: {SideBar, Header},
   data() {
     return {
-      items: [],
       formData: {
-        name: '',
-        price: '',
-        color: '',
-        quantity: '',
+        title: '',
         description: ''
       }
     }
@@ -81,17 +69,14 @@ export default {
     }
   },
   methods: {
-    addItem() {
-      api.post('create_item', {
-        name: this.formData.name,
+    addEvent() {
+      api.post('create_event', {
+        title: this.formData.title,
         description: this.formData.description,
-        price: this.formData.price,
-        color: this.formData.color,
-        quantity: this.formData.quantity,
       }, true).then((response) => {
         console.log(response);
-        this.items = response;
-      });
+    this.$router.push('/events');
+  });
     }
   }
 }

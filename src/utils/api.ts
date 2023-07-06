@@ -1,4 +1,4 @@
-const BASE_URL = "https://scm-api.vercel.app"
+const BASE_URL = "https://scm-api.vercel.app"//"http://10.4.21.56:5500";
 
 
 export const get = async (resource: string, data:any,auth=false) => {

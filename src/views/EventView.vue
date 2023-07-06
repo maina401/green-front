@@ -79,10 +79,8 @@ export default {
     deleteItem(id) {
      confirm('Are you sure you want to delete this event?') &&  api.post('delete_event', {
        id: id
-     }, true).then((response) => {
-       if ( response.status === "01" ){
-         this.getItems();
-       }
+     }, true).then(() => {
+         this.getEvents();
      });
     }
   }

@@ -9,13 +9,13 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <div class="row d-flex">
+              <div class="row ">
                 <div class="col-md-8">
                   <h3 class="card-title">Available Items</h3>
                 </div>
 
                 <div class="col-md-4 pull-right">
-                  <RouterLink to="/item/add" class="btn btn-primary float-end">Add Item</RouterLink>
+                  <RouterLink to="/item/add" class="btn btn-primary pull-right float-end">Add Item</RouterLink>
                 </div>
               </div>
             </div>
@@ -38,7 +38,8 @@
                     <td>{{ item.color }}</td>
                     <td>{{ item.quantity }}</td>
                     <td>
-                      <RouterLink :to="'/item/edit/' + item.id" class="btn btn-primary">Edit</RouterLink>
+                      <RouterLink :to="'/item/edit/' + item.id" class="btn btn-outline-secondary m-2">Edit</RouterLink>
+                      <RouterLink :to="'/item/events/' + item.id" class="btn btn-outline-secondary  m-2">Events</RouterLink>
                       <button class="btn btn-danger" @click="deleteItem(item.id)">Delete</button>
                     </td>
                   </tr>

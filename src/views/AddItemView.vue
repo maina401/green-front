@@ -11,7 +11,7 @@
             <div class="card-header">
               <div class="row d-flex">
                 <div class="col-md-8">
-                  <h3 class="card-title">Add Items</h3>
+                  <h3 class="card-title">{{operation}} Item</h3>
                 </div>
 
                 <div class="col-md-4 pull-right">
@@ -39,7 +39,7 @@
                     <input type="text" class="form-control" id="inputQuantity" placeholder="Quantity" v-model="formData.quantity">
                   </div>
                   <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-primary">{{operation}}</button>
                   </div>
                 </form>
               </div>
@@ -63,16 +63,19 @@ export default {
     return {
       items: [],
       formData: {
+        id: '',
         name: '',
         price: '',
         color: '',
         quantity: '',
         description: ''
-      }
+      },
+      operation: 'Add'
     }
   },
   mounted() {
     if (this.$route.params.id) {
+      this.operation = 'Edit';
       api.get('get_item',{
         id: this.$route.params.id
       }, true).then((response) => {
@@ -82,12 +85,13 @@ export default {
   },
   methods: {
     addItem() {
-      api.post('create_item', {
-        name: this.formData.name,
-        description: this.formData.description,
-        price: this.formData.price,
-        color: this.formData.color,
-        quantity: this.formData.quantity,
+      let resource = 'create_item';
+      if (this.$route.params.id) {
+        resource = 'update_item';
+        this.formData.id = this.$route.params.id;
+      }
+      api.post(resource, {
+        ...this.formData,
       }, true).then((response) => {
         console.log(response);
         this.items = response;

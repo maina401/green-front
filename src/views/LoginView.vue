@@ -130,11 +130,11 @@ export default {
           localStorage.setItem('user', JSON.stringify(response.data))
           this.$router.push('/login')
         } else {
-          this.$toast.error(response.error.join('<br>'))
+          alert(response.error.join('<br>'))
         }
       }).catch((error) => {
         console.log(error)
-        this.$toast.error(error.response.error.join('<br>'))
+        alert(error.response.error.join('<br>'))
       })
     },
     login() {
@@ -154,14 +154,14 @@ export default {
         console.log(response)
         if (response.status === '01') {
           localStorage.setItem('token', JSON.stringify(response))
-          this.$toast.success('Login Success')
+          alert('Login Success')
           this.$router.push('/')
         } else {
-          this.$toast.error(response.message)
+          alert(response.message)
         }
       }).catch((error) => {
         console.log(error)
-        this.$toast.error(error.response.message)
+        alert(error.response.message)
       })
     },
     togglePassword() {
