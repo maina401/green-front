@@ -31,12 +31,12 @@
           </li>
           <li class="slide">
             <RouterLink to="/" class="side-menu__item" data-bs-toggle="slide" ><i
-                class="side-menu__icon fe fe-home"></i><span
-                class="side-menu__label">Dashboard</span></RouterLink>
+                class="side-menu__icon fe fe-briefcase"></i><span
+                class="side-menu__label">Items</span></RouterLink>
           </li>
           <li class="slide">
             <RouterLink to="/events" class="side-menu__item" data-bs-toggle="slide" ><i
-                class="side-menu__icon fe fe-home"></i><span
+                class="side-menu__icon fe fe-activity"></i><span
                 class="side-menu__label">Events</span></RouterLink>
           </li>
         </ul>

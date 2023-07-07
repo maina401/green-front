@@ -127,6 +127,7 @@ export default {
     register() {
       api.post('register', this.registerFormData).then((response) => {
         if (response.status === '01') {
+          alert(response.message)
           localStorage.setItem('user', JSON.stringify(response.data))
           this.$router.push('/login')
         } else {
