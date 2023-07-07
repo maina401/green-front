@@ -7,8 +7,8 @@
     "nightwatch.conf.*",
     "playwright.config.*"
   ],
-  "allowJs": true ,
   "compilerOptions": {
+    "allowJs": true ,
     "composite": true,
     "module": "ESNext",
     "types": ["node"]

@@ -4,7 +4,7 @@ const BASE_URL = "https://scm-api.vercel.app"//"http://10.4.21.56:5500";
 export const get = async (resource: string, data:any,auth=false) => {
     let headers= {}
     if (auth) {
-        const token = JSON.parse(localStorage.getItem('token'))
+        const token = JSON.parse(localStorage.getItem('token') || 'null');
         if (token) {
             headers = {
                 'Authorization': 'Bearer ' + token.access_token ,
@@ -26,10 +26,11 @@ export const get = async (resource: string, data:any,auth=false) => {
 export const post = async (resource: string, data: any,auth=false) => {
 
     let headers= {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization' : ''
     }
     if (auth) {
-        const token = JSON.parse(localStorage.getItem('token'))
+        const token = JSON.parse(localStorage.getItem('token') || 'null');
         if (token) {
             headers = {
                 ...headers,
